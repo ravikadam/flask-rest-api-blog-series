@@ -42,7 +42,7 @@ errors = {
          "status": 400
      },
      "UpdatingOrganisationError": {
-         "message": "Updating organisation added by other is forbidden",
+         "message": "Organisation does not exist",
          "status": 403
      },
      "DeletingOrganisationError": {

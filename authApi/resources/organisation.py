@@ -17,15 +17,10 @@ class OrganisationApi(Resource):
     def post(self):
         try:
             #user_id = get_jwt_identity()
-            print(111)
             body = request.get_json()
-            print(222)
             organisation =  Organisation(**body)
-            print(333)
             organisation.save()
-            print(444)
             id = organisation.id
-            print(555)
             return {'id': str(id)}, 200
 
         except (FieldDoesNotExist, ValidationError):
@@ -36,9 +31,9 @@ class OrganisationApi(Resource):
             raise InternalServerError
 
 
-class OrganisationsApi(Resource):
-    @jwt_required
-    def put(self, id):
+class OrganisationsChangeApi(Resource):
+   # @jwt_required
+    def put(self,id):
         try:
             organisation = Organisation.objects.get(id=id)
             body = request.get_json()
@@ -51,8 +46,8 @@ class OrganisationsApi(Resource):
         except Exception:
             raise InternalServerError       
     
-    @jwt_required
-    def delete(self, id):
+    #@jwt_required
+    def delete(self,id):
         try:
             organisation = Organisation.objects.get(id=id)
             organisation.delete()
